@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FrutigerBold.ttf">
+            <string>FrutigerLT-65Bd</string>
+        </array>
+        <array key="FrutigerRoman.ttf">
+            <string>FrutigerLT-55Rm</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Tid PopupVC-->
+        <scene sceneID="eeI-tu-7CF">
+            <objects>
+                <viewController storyboardIdentifier="TidPopupVC" id="cQP-8A-JUV" customClass="TidPopupVC" customModule="Tijarati" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OUb-t7-6RD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-4p-HSA">
+                                <rect key="frame" x="0.0" y="452" width="414" height="410"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="6Tb-Zg-sOz">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPq-fo-vyZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select CIF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiM-X4-lyJ">
+                                                        <rect key="frame" x="169" y="20" width="76" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="FrutigerLT-65Bd" family="Frutiger LT" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Emr-LL-I5G">
+                                                        <rect key="frame" x="379" y="20" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="BMa-Cs-IQN"/>
+                                                            <constraint firstAttribute="height" constant="20" id="jJJ-Fc-Tc8"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="ic_cross"/>
+                                                        <connections>
+                                                            <action selector="closeButtonAction:" destination="cQP-8A-JUV" eventType="touchUpInside" id="3E0-3j-Zwu"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Emr-LL-I5G" secondAttribute="trailing" constant="15" id="YmY-vN-EI1"/>
+                                                    <constraint firstAttribute="height" constant="60" id="bs0-XQ-SbP"/>
+                                                    <constraint firstItem="fiM-X4-lyJ" firstAttribute="centerY" secondItem="hPq-fo-vyZ" secondAttribute="centerY" id="emr-zJ-IfV"/>
+                                                    <constraint firstItem="Emr-LL-I5G" firstAttribute="centerY" secondItem="fiM-X4-lyJ" secondAttribute="centerY" id="ffx-kR-X1X"/>
+                                                    <constraint firstItem="fiM-X4-lyJ" firstAttribute="centerX" secondItem="hPq-fo-vyZ" secondAttribute="centerX" id="nI9-rW-1ie"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fLr-P0-peM">
+                                                <rect key="frame" x="0.0" y="60" width="414" height="300"/>
+                                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="HQf-au-hC7"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="cQP-8A-JUV" id="M8P-cH-Jur"/>
+                                                    <outlet property="delegate" destination="cQP-8A-JUV" id="PX1-jt-jpD"/>
+                                                </connections>
+                                            </tableView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thh-iz-gf8">
+                                                <rect key="frame" x="0.0" y="360" width="414" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="6QM-pG-HOQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="FrutigerLT-55Rm" family="Frutiger LT" pointSize="18"/>
+                                                <state key="normal" title="Proceed" backgroundImage="btn_bg">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="proceedButtonAction:" destination="cQP-8A-JUV" eventType="touchUpInside" id="7gg-3R-ghb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6Tb-Zg-sOz" secondAttribute="bottom" id="XG0-02-24I"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Tb-Zg-sOz" secondAttribute="trailing" id="aJl-4S-f5t"/>
+                                    <constraint firstItem="6Tb-Zg-sOz" firstAttribute="top" secondItem="n8N-4p-HSA" secondAttribute="top" id="bIu-zQ-eoq"/>
+                                    <constraint firstItem="6Tb-Zg-sOz" firstAttribute="leading" secondItem="n8N-4p-HSA" secondAttribute="leading" id="d2f-Vl-hdC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ITj-pb-phT"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ITj-pb-phT" firstAttribute="trailing" secondItem="n8N-4p-HSA" secondAttribute="trailing" id="79L-eA-CCP"/>
+                            <constraint firstItem="ITj-pb-phT" firstAttribute="bottom" secondItem="n8N-4p-HSA" secondAttribute="bottom" id="Dox-mY-VFB"/>
+                            <constraint firstItem="n8N-4p-HSA" firstAttribute="leading" secondItem="ITj-pb-phT" secondAttribute="leading" id="jeV-nz-bYr"/>
+                            <constraint firstItem="n8N-4p-HSA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ITj-pb-phT" secondAttribute="top" constant="20" id="jwt-kD-yeO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="Emr-LL-I5G" id="tLA-RP-9Ft"/>
+                        <outlet property="listTableView" destination="fLr-P0-peM" id="lqp-2E-JjW"/>
+                        <outlet property="listTableViewHeightConstraint" destination="HQf-au-hC7" id="6AD-Ix-atK"/>
+                        <outlet property="popupBackView" destination="n8N-4p-HSA" id="dbp-Hj-oqc"/>
+                        <outlet property="proceedButton" destination="thh-iz-gf8" id="9M1-yv-ZuY"/>
+                        <outlet property="titleBackView" destination="hPq-fo-vyZ" id="Plo-Ff-LOF"/>
+                        <outlet property="titleLabel" destination="fiM-X4-lyJ" id="0Gk-gC-mQe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFk-yU-3E2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-85.507246376811594" y="-2.0089285714285712"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_bg" width="1126" height="193"/>
+        <image name="ic_cross" width="46" height="46"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
