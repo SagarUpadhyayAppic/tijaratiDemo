@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FrutigerBold.ttf">
+            <string>FrutigerLT-65Bd</string>
+        </array>
+        <array key="FrutigerRoman.ttf">
+            <string>FrutigerLT-55Rm</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BulkPaymentFileConfirmAndSendViewController" customModule="Tijarati" customModuleProvider="target">
+            <connections>
+                <outlet property="backBtnRef" destination="s2v-hu-8rS" id="9UB-Xq-cel"/>
+                <outlet property="containerView" destination="xaj-Xf-d3g" id="Ui5-DT-TiV"/>
+                <outlet property="detailTitleLbl" destination="LDd-9t-Ul6" id="VGZ-3h-kfo"/>
+                <outlet property="emailSentToLblRef" destination="Krs-cx-hmf" id="sbr-5Q-duT"/>
+                <outlet property="goToDashboardBtnRef" destination="fx8-l5-Vdr" id="KXy-jO-Ox1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaj-Xf-d3g">
+                    <rect key="frame" x="0.0" y="570" width="414" height="326"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2tC-It-seK">
+                            <rect key="frame" x="0.0" y="16" width="414" height="276"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jje-N0-qp9">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDd-9t-Ul6">
+                                            <rect key="frame" x="38" y="6.5" width="330" height="17"/>
+                                            <fontDescription key="fontDescription" name="FrutigerLT-55Rm" family="Frutiger LT" pointSize="14"/>
+                                            <color key="textColor" red="0.47058823529999999" green="0.56470588239999997" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2v-hu-8rS">
+                                            <rect key="frame" x="376" y="0.0" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Sec-uO-ptY"/>
+                                                <constraint firstAttribute="width" constant="30" id="fbx-rb-zhK"/>
+                                            </constraints>
+                                            <state key="normal" image="Icon Cross"/>
+                                            <connections>
+                                                <action selector="backBtnTap:" destination="-1" eventType="touchUpInside" id="yYa-aS-6tP"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="s2v-hu-8rS" secondAttribute="bottom" id="DUw-Lf-r4c"/>
+                                        <constraint firstItem="LDd-9t-Ul6" firstAttribute="centerY" secondItem="s2v-hu-8rS" secondAttribute="centerY" id="GkS-jh-9fu"/>
+                                        <constraint firstItem="LDd-9t-Ul6" firstAttribute="leading" secondItem="Jje-N0-qp9" secondAttribute="leading" constant="38" id="Yvh-Oq-bDd"/>
+                                        <constraint firstItem="s2v-hu-8rS" firstAttribute="top" secondItem="Jje-N0-qp9" secondAttribute="top" id="lgS-nI-QTg"/>
+                                        <constraint firstAttribute="trailing" secondItem="s2v-hu-8rS" secondAttribute="trailing" constant="8" id="qRU-Ab-bFy"/>
+                                        <constraint firstItem="s2v-hu-8rS" firstAttribute="leading" secondItem="LDd-9t-Ul6" secondAttribute="trailing" constant="8" id="vjb-7K-m5e"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWX-E0-Ca6">
+                                    <rect key="frame" x="0.0" y="50" width="414" height="1"/>
+                                    <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="97g-QV-u8s"/>
+                                    </constraints>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon ionic-ios-checkmark-circle" translatesAutoresizingMaskIntoConstraints="NO" id="G4W-yn-jjg">
+                                    <rect key="frame" x="0.0" y="71" width="414" height="77"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="77" id="h3v-8H-2XP"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Sent to 30 Customers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krs-cx-hmf">
+                                    <rect key="frame" x="0.0" y="168" width="414" height="19"/>
+                                    <fontDescription key="fontDescription" name="FrutigerLT-65Bd" family="Frutiger LT" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx8-l5-Vdr">
+                                    <rect key="frame" x="0.0" y="207" width="414" height="69"/>
+                                    <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="FrutigerLT-55Rm" family="Frutiger LT" pointSize="16"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="25"/>
+                                    <state key="normal" title="GO TO DASHBOARD">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="goToDashboardBtnTap:" destination="-1" eventType="touchUpInside" id="coJ-2X-H5g"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="2tC-It-seK" firstAttribute="top" secondItem="xaj-Xf-d3g" secondAttribute="top" constant="16" id="S94-cF-GWV"/>
+                        <constraint firstAttribute="trailing" secondItem="2tC-It-seK" secondAttribute="trailing" id="aMQ-KB-gCS"/>
+                        <constraint firstItem="2tC-It-seK" firstAttribute="leading" secondItem="xaj-Xf-d3g" secondAttribute="leading" id="he2-tw-1mP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="xaj-Xf-d3g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Gg-Gs-Tnf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xaj-Xf-d3g" secondAttribute="trailing" id="Own-HL-jSa"/>
+                <constraint firstAttribute="bottom" secondItem="xaj-Xf-d3g" secondAttribute="bottom" id="ajb-eQ-yHU"/>
+                <constraint firstItem="xaj-Xf-d3g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iJg-zV-1Sy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2tC-It-seK" secondAttribute="bottom" id="zyc-b0-Q9T"/>
+            </constraints>
+            <point key="canvasLocation" x="66.666666666666671" y="70.982142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Icon Cross" width="46" height="46"/>
+        <image name="Icon ionic-ios-checkmark-circle" width="231.5" height="231.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

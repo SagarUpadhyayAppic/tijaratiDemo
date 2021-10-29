@@ -1,0 +1,217 @@
+PODS:
+  - AAInfographics (4.0.0)
+  - Alamofire (4.9.1)
+  - BubbleTransition (3.2.0)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - CryptoSwift (1.3.2)
+  - ExpyTableView (1.2)
+  - Fabric (1.10.2)
+  - Firebase/Analytics (6.32.2):
+    - Firebase/Core
+  - Firebase/Core (6.32.2):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.8.2)
+  - Firebase/CoreOnly (6.32.2):
+    - FirebaseCore (= 6.10.2)
+  - Firebase/Crashlytics (6.32.2):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.6.0)
+  - Firebase/DynamicLinks (6.32.2):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 4.3.0)
+  - FirebaseAnalytics (6.8.2):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleAppMeasurement (= 6.8.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
+  - FirebaseCore (6.10.2):
+    - FirebaseCoreDiagnostics (~> 1.6)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+  - FirebaseCoreDiagnostics (1.6.0):
+    - GoogleDataTransport (~> 7.2)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+    - nanopb (~> 1.30906.0)
+  - FirebaseCrashlytics (4.6.1):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleDataTransport (~> 7.2)
+    - nanopb (~> 1.30906.0)
+    - PromisesObjC (~> 1.2)
+  - FirebaseDynamicLinks (4.3.0):
+    - FirebaseCore (~> 6.10)
+  - FirebaseInstallations (1.7.0):
+    - FirebaseCore (~> 6.10)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - PromisesObjC (~> 1.2)
+  - FSCalendar (2.8.1)
+  - GoogleAppMeasurement (6.8.2):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
+  - GoogleDataTransport (7.3.0):
+    - nanopb (~> 1.30906.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.7.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.7.2):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.7.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.7.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.7.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.7.2)"
+  - GoogleUtilities/Reachability (6.7.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.7.2):
+    - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (6.5.5)
+  - Koyomi (1.2.7)
+  - LanguageManager-iOS (1.2.0)
+  - LUExpandableTableView (5.0.0)
+  - MBProgressHUD (1.2.0)
+  - nanopb (1.30906.0):
+    - nanopb/decode (= 1.30906.0)
+    - nanopb/encode (= 1.30906.0)
+  - nanopb/decode (1.30906.0)
+  - nanopb/encode (1.30906.0)
+  - PromisesObjC (1.2.10)
+  - RESideMenu (4.0.7)
+  - Siren (5.4.5)
+  - SPStorkController (1.8.2)
+  - SSZipArchive (2.2.3)
+  - SVPinView (1.0.8)
+  - SwiftyRSA (1.5.0):
+    - SwiftyRSA/ObjC (= 1.5.0)
+  - SwiftyRSA/ObjC (1.5.0)
+  - TJBioAuthentication (1.2.0)
+  - XlsxReaderWriter (2.4.0):
+    - SSZipArchive (~> 2.1)
+
+DEPENDENCIES:
+  - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
+  - Alamofire (= 4.9.1)
+  - BubbleTransition (= 3.2.0)
+  - Charts (= 3.4.0)
+  - Crashlytics (= 3.14.0)
+  - CryptoSwift (= 1.3.2)
+  - ExpyTableView (= 1.2)
+  - Firebase/Analytics
+  - Firebase/Crashlytics
+  - Firebase/DynamicLinks
+  - FSCalendar (= 2.8.1)
+  - IQKeyboardManagerSwift (= 6.5.5)
+  - Koyomi (= 1.2.7)
+  - LanguageManager-iOS (= 1.2.0)
+  - LUExpandableTableView
+  - MBProgressHUD (= 1.2.0)
+  - RESideMenu (= 4.0.7)
+  - Siren
+  - SPStorkController (= 1.8.2)
+  - SVPinView (= 1.0.8)
+  - SwiftyRSA (= 1.5.0)
+  - TJBioAuthentication (= 1.2.0)
+  - XlsxReaderWriter (~> 2.4.0)
+
+SPEC REPOS:
+  https://github.com/charlymr/XlsxReaderWriter-Podspecs.git:
+    - XlsxReaderWriter
+  trunk:
+    - Alamofire
+    - BubbleTransition
+    - Charts
+    - Crashlytics
+    - CryptoSwift
+    - ExpyTableView
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
+    - FirebaseDynamicLinks
+    - FirebaseInstallations
+    - FSCalendar
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleUtilities
+    - IQKeyboardManagerSwift
+    - Koyomi
+    - LanguageManager-iOS
+    - LUExpandableTableView
+    - MBProgressHUD
+    - nanopb
+    - PromisesObjC
+    - RESideMenu
+    - Siren
+    - SPStorkController
+    - SSZipArchive
+    - SVPinView
+    - SwiftyRSA
+    - TJBioAuthentication
+
+EXTERNAL SOURCES:
+  AAInfographics:
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+CHECKOUT OPTIONS:
+  AAInfographics:
+    :commit: 2b690daed0cef3d38c5b1da7f38bd9a021d8ba0f
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+SPEC CHECKSUMS:
+  AAInfographics: bbeed03caece4ee3b5e557d734967394e9bcdb11
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
+  CryptoSwift: 093499be1a94b0cae36e6c26b70870668cb56060
+  ExpyTableView: e317dc2bccfab6672d52b62507c834a4ecb57bba
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
+  Firebase: 47176280bfba198e531f909cfb1612dad216cb96
+  FirebaseAnalytics: 3c2fee6a922023ccfda7af87e4e641bad1fc11ba
+  FirebaseCore: 1d697bb944bf2af5fc248f1a66e165c9dd88bf97
+  FirebaseCoreDiagnostics: 7415bfb3883b3500c5a95c42b6ba66baae78f600
+  FirebaseCrashlytics: 5777d3462fb8c3ab9e80a2473bd7d667a2e8411c
+  FirebaseDynamicLinks: bab0682388b983f9b0044a1fb555606ddb0e9b7e
+  FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  GoogleAppMeasurement: 1a66f478c68ecd6c16ee63ee60c7c3a648e6b337
+  GoogleDataTransport: e85fb700c9b027079ce182c3d08e12e0f9618bb4
+  GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  Koyomi: f03615b8d2bb5a5a4752c6404a9794ed7ef7b327
+  LanguageManager-iOS: 516c4f088435c83cbdbddfc5179f88e4e0d39eb4
+  LUExpandableTableView: 710ed7e7d55d0b58d61c95561bd9ecbf39692010
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  RESideMenu: f24c508404b49c667344c54aba7e590883533958
+  Siren: 4c6f4863ea5b7f2d0e58b576663fefd8f6ef417f
+  SPStorkController: d809adb3e333ec07760f8bf1b4c628a2801675ac
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
+  SVPinView: 3194be48b8275805244486590b82e6da14d23ca6
+  SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
+  TJBioAuthentication: 9833a046cf8d2b1379af3fcd9c098e1a4150fe6e
+  XlsxReaderWriter: d78321336f3ee9baf06ceef75c989a882cefa2fc
+
+PODFILE CHECKSUM: 84487390a91161ac20c62a516cc72f67ae931912
+
+COCOAPODS: 1.10.1
