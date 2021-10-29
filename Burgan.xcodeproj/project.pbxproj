@@ -1724,7 +1724,7 @@
 				CODE_SIGN_ENTITLEMENTS = Burgan/Burgan.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.26;
+				CURRENT_PROJECT_VERSION = 2.29;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8A3NUX488Y;
 				EXCLUDED_ARCHS = "";
@@ -1754,7 +1754,7 @@
 				CODE_SIGN_ENTITLEMENTS = Burgan/Burgan.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.26;
+				CURRENT_PROJECT_VERSION = 2.29;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8A3NUX488Y;
 				INFOPLIST_FILE = Burgan/Info.plist;

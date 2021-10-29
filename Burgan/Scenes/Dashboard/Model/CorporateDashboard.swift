@@ -142,7 +142,7 @@ struct Transaction: Codable {
     let bulkSMSRefID: String?
     let paymentURL: String?
     let transactionDescription: String?
-    let email: String?
+    let emailId: String?
     let payerName: String?
 
     enum CodingKeys: String, CodingKey {
@@ -151,7 +151,7 @@ struct Transaction: Codable {
         case bulkSMSRefID = "bulkSmsRefId"
         case paymentURL
         case transactionDescription = "description"
-        case email
+        case emailId
         case payerName
     }
 }

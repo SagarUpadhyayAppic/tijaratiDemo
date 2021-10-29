@@ -49,12 +49,18 @@ extension UISegmentedControl {
         underline.tag = 1
         self.addSubview(underline)
 
-
+        changeUnderlinePosition()
     }
 
     func changeUnderlinePosition(){
         guard let underline = self.viewWithTag(1) else {return}
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex)
+        // let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.numberOfSegments - (selectedSegmentIndex + 1))
+        var underlineFinalXPosition: CGFloat = 0.0
+        if AppConstants.language == .ar {
+            underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.numberOfSegments - (selectedSegmentIndex + 1))
+        } else {
+            underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex)
+        }
         underline.frame.origin.x = underlineFinalXPosition
 
     }

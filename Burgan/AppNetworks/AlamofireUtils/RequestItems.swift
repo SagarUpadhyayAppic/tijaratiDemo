@@ -60,6 +60,7 @@ enum RequestItemsType {
     case paymentSalesSummary
     case paymentSalesGraph
     case fileUploadHistory
+    case search
   //  case events(_: String)
         
 }
@@ -206,6 +207,8 @@ extension RequestItemsType: EndPointType {
             return tijaratiApi + "sale/graph"
         case .fileUploadHistory:
             return tijaratiApi + "fileUploadHistory"
+        case .search:
+            return tijaratiApi + "sale/search"
 
         }
     }

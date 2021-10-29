@@ -18,6 +18,7 @@ class CollectPaymentInitiateBtnClickViewController: UIViewController {
     @IBOutlet var viewRef: UIView!
 
     var text = ""
+    var selectedLang = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,13 @@ class CollectPaymentInitiateBtnClickViewController: UIViewController {
         shareBtnRef.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         textViewRef.text = text
+        
+        if selectedLang == "AR" {
+            textViewRef.textAlignment = .right
+        } else {
+            textViewRef.textAlignment = .left
+        }
+        
         arabicSetup()
     }
     
@@ -77,12 +85,23 @@ extension CollectPaymentInitiateBtnClickViewController{
     func backToDashBoard(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        let dashboardVc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        let controller = (UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RootViewController") as? RootViewController)!
-        appDelegate.window?.rootViewController = controller
-        appDelegate.window?.makeKeyAndVisible()
+        
+         let controller = (UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RootViewController") as? RootViewController)!
+         appDelegate.window?.rootViewController = controller
+         appDelegate.window?.makeKeyAndVisible()
+         
+        
         
 //        let controller = (UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RootViewController") as? RootViewController)!
 //       self.navigationController?.pushViewController(controller, animated: true)
+        
+        
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RootViewController") as! RootViewController
+//        let navigationController = UINavigationController()
+//        navigationController.pushViewController(nextViewController, animated: true)
+//        appDelegate.window?.rootViewController = navigationController
+//        appDelegate.window?.makeKeyAndVisible()
     }
     
 }

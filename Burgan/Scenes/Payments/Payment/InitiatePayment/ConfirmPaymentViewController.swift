@@ -117,6 +117,10 @@ class ConfirmPaymentViewController: UIViewController, XIBed, UIViewControllerTra
     }
     
     @IBAction func confirmPaymentButtonTapped(_ sender: UIButton) {
+       callSinglePaymentInitiateAPI()
+    }
+    
+    func callSinglePaymentInitiateAPI() {
         viewModel = RegistrationViewControllerViewModel()
         
         let param : [String : Any] = ["cif" : self.cif,
@@ -127,15 +131,16 @@ class ConfirmPaymentViewController: UIViewController, XIBed, UIViewControllerTra
                                       "description" : self.descriptions,
                                       "deviceId": self.deviceId,
                                       "name" : self.name,
-                                      "language": self.language
+                                      "language": self.language,
+                                      "payeeName" : AppConstants.cifCompanyName
         ]
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
         self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.singlePaymentInitiate)
-        callSinglePaymentInitiateAPI()
+        bindSinglePaymentInitiateAPI()
     }
     
-    func callSinglePaymentInitiateAPI(){
+    func bindSinglePaymentInitiateAPI(){
         
         self.viewModel?.alertMessage.bind({ [weak self] in
             MBProgressHUD.hide(for: self!.view, animated: true)
@@ -152,22 +157,7 @@ class ConfirmPaymentViewController: UIViewController, XIBed, UIViewControllerTra
                 {
                     let status : String = userStatus.value(forKey: "status") as? String ?? ""
                     if status == "" {
-                        
-                        
-                        let param : [String : Any] = ["cif" : self?.cif ?? "",
-                                                      "eZPayOutletNumber" : self?.ezpayOutletNumber ?? "",
-                                                      "emailId" : self?.emailID ?? "",
-                                                      "amt" : self?.amt ?? "",
-                                                      "mobileNumber" : self?.mobileNo ?? "",
-                                                      "description" : self?.descriptions ?? "",
-                                                      "deviceId": self?.deviceId ?? "",
-                                                      "name" : self?.name ?? "",
-                                                      "language": self?.language ?? ""
-                        ]
-                        MBProgressHUD.showAdded(to: self!.view, animated: true)
-                        self?.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.singlePaymentInitiate)
                         self?.callSinglePaymentInitiateAPI()
-                        
                     } else {
                         
                         let message : String = userStatus.value(forKey: "message") as! String
@@ -186,6 +176,7 @@ class ConfirmPaymentViewController: UIViewController, XIBed, UIViewControllerTra
                                 
 //                                vc.text = "Dear customer,".localiz() + " \(AppConstants.cifCompanyName) " + "has requested payment for".localiz() + " KD \(object?.model?.amount ?? "KD 0.00")." + "\nTap on the below link to pay:- \n".localiz() + "\(linkText)"
                                 vc.text = linkText
+                                vc.selectedLang = self?.language ?? ""
                                 vc.modalPresentationStyle = .custom
                                 vc.transitioningDelegate = self
                                 self?.present(vc, animated: true, completion: nil)

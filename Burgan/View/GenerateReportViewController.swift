@@ -1136,7 +1136,7 @@ class GenerateReportViewController: UIViewController, UICollectionViewDelegate, 
         inputFormatter.dateFormat = currentFormat
         let showDate = inputFormatter.date(from: date)
         inputFormatter.dateFormat = desiredFormat
-        let resultString = inputFormatter.string(from: showDate!)
+        let resultString = inputFormatter.string(from: showDate ?? Date())
         return resultString
     }
     

@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             userDefaults.set(true, forKey: "hasRunBefore")
         }
         
-        
         UserDefaults.standard.setValue("123456", forKey: "DeviceToken")
         
         IQKeyboardManager.shared.enable = true

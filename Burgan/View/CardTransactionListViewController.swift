@@ -24,6 +24,8 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
     var bulkTransactionData = BulkPaymentTransactionApi()
     var bulkSmsRefId : String = ""
     
+    var selectedCardType: String = "all"
+    var selectedPaymentChannel: String = "all"
     
     @IBOutlet weak var lblTitles: UILabel!
     
@@ -53,7 +55,7 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
         
         lblTitles.text = titleStr
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Search"
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Search".localiz()
         searchTfRef.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.networkStatusChanged(_:)), name: Notification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
         Reach().monitorReachabilityChanges()
@@ -72,11 +74,13 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
         //            merchantTranDetailReq()
         //        }
         
-        if isFromPayment{
+        searchTfRef.placeholder = "Search via last 4 digits card or mobile no".localiz()
+        searchTfRef.textAlignment = AppConstants.language == .ar ? .right : .left
+        
+        if isFromPayment {
             callBulkHistoryAPI()
-        }else{
-            if AppConstants.UserData.merchantRole == "Admin"
-            {
+        } else {
+            if AppConstants.UserData.merchantRole == "Admin" {
                 if AppConstants.isCif {
                     corporateTranDetailReq()
                 } else {
@@ -100,12 +104,12 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         searchViewRef.isHidden = true
-        if cardType == "debit"{
+        if cardType == "debit" {
             
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
-            let items = ["All","POS","Ecomm","Tijarati"]
+            let items = ["All".localiz(),"POS".localiz(),"Ecomm".localiz(),"Tijarati".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
@@ -113,12 +117,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 self.segmentCtrlRef.setupSegment()
             }
             
-        }else if cardType == "credit"{
+            selectedPaymentChannel = "all"
+            selectedCardType = "debit"
+            
+        } else if cardType == "credit" {
             
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
-            let items = ["All","POS","Ecomm","Tijarati"]
+            let items = ["All".localiz(),"POS".localiz(),"Ecomm".localiz(),"Tijarati".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
@@ -126,13 +133,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 self.segmentCtrlRef.setupSegment()
             }
             
+            selectedPaymentChannel = "all"
+            selectedCardType = "credit"
             
-        }else if cardType == "POS"{
+        } else if cardType == "POS" {
             
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
-            let items = ["All","POS","Ecomm","Tijarati"]
+            let items = ["All".localiz(),"Debit Card".localiz(),"Credit Card".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
@@ -140,13 +149,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 self.segmentCtrlRef.setupSegment()
             }
             
+            selectedPaymentChannel = "POS"
+            selectedCardType = "all"
             
-        }else if cardType == "Ecomm"{
+        } else if cardType == "Ecomm" {
             
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
-            let items = ["All","POS","Ecomm","Tijarati"]
+            let items = ["All".localiz(),"Debit Card".localiz(),"Credit Card".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
@@ -154,13 +165,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 self.segmentCtrlRef.setupSegment()
             }
             
+            selectedPaymentChannel = "Ecomm"
+            selectedCardType = "all"
             
-        }else if cardType == "ezpay"{
+        } else if cardType == "ezpay"{
             
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
-            let items = ["All","POS","Ecomm","Tijarati"]
+            let items = ["All".localiz(),"Debit Card".localiz(),"Credit Card".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
@@ -168,23 +181,27 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 self.segmentCtrlRef.setupSegment()
             }
             
+            selectedPaymentChannel = "ezpay"
+            selectedCardType = "all"
             
-        }
-        else if cardType == "bulkTransactionViewAll"{
+        } else if cardType == "bulkTransactionViewAll" {
             
-            let items = ["All","Debit Card","Credit Card","Tijarati Pay"]
+            let items = ["All".localiz(),"Debit Card".localiz(),"Credit Card".localiz(),"Tijarati Pay".localiz()]
             
             segmentCtrlRef.replaceSegments(segments: items)
             segmentCtrlRef.selectedSegmentIndex = 0
             DispatchQueue.main.async {
                 self.segmentCtrlRef.setupSegment()
             }
-            
             
             bulkTransactionViewAllViewHeightRef.constant = 64
             bulkTransactionViewAllViewRef.isHidden = false
             
+            selectedPaymentChannel = "BULKSMSTXN"
+            selectedCardType = "all"
+            
         } else if cardType == "all" {
+            
             bulkTransactionViewAllViewHeightRef.constant = 0
             bulkTransactionViewAllViewRef.isHidden = true
             
@@ -192,10 +209,14 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
             segmentViewHeightRef.constant = 0
             dateViewRef.isHidden = true
             
+            selectedPaymentChannel = "all"
+            selectedCardType = "all"
+            
         }
         
         searchViewRef.isHidden = true
         segmentOutsideViewRef.isHidden = true
+        
         
         let startDate = AppConstants.jsonStartDate.dateFromFormat("yyyy-MM-dd")
         let endDate = AppConstants.jsonEndDate.dateFromFormat("yyyy-MM-dd")
@@ -216,7 +237,7 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Done"
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Done".localiz()
     }
     
     func corporateTranDetailReq(){
@@ -367,15 +388,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
                 print("Default...")
             }
             
-//            if let status  = object?.txnStatus {
-//                if status.contains("Success") {
-//                    cell.lblStatus.text =  "Approved".localiz()
-//                } else {
-//                    cell.lblStatus.text =  status.localiz()
-//                }
-//            } else {
-//                cell.lblStatus.text = "--"
-//            }
+            //            if let status  = object?.txnStatus {
+            //                if status.contains("Success") {
+            //                    cell.lblStatus.text =  "Approved".localiz()
+            //                } else {
+            //                    cell.lblStatus.text =  status.localiz()
+            //                }
+            //            } else {
+            //                cell.lblStatus.text = "--"
+            //            }
             
             cell.lblStatus.text = object?.cardNum ?? ""
             
@@ -421,15 +442,15 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
             cell.lblAmount.text = "KD " + setAmounts(amount: (transactionDetailArray[indexPath.row].amount ?? "0.000").replacingOccurrences(of: "-", with: "") )
             cell.lblDate.text = "TX ID".localiz() + ": \(transactionDetailArray[indexPath.row].txnid ?? "") | " + self.convertDateToSpecificFormat(date: "\(transactionDetailArray[indexPath.row].date ?? "") \(transactionDetailArray[indexPath.row].time ?? "")", currentFormat: "dd-MM-yyyy HH:mm:ss", desiredFormat: "dd MMM yyyy | HH:mm")
             
-//            if let status  = transactionDetailArray[indexPath.row].txnStatus {
-//                if status.contains("Success") {
-//                    cell.lblStatus.text =  "Approved".localiz()
-//                } else {
-//                    cell.lblStatus.text =  status.localiz()
-//                }
-//            } else {
-//                cell.lblStatus.text = "--"
-//            }
+            //            if let status  = transactionDetailArray[indexPath.row].txnStatus {
+            //                if status.contains("Success") {
+            //                    cell.lblStatus.text =  "Approved".localiz()
+            //                } else {
+            //                    cell.lblStatus.text =  status.localiz()
+            //                }
+            //            } else {
+            //                cell.lblStatus.text = "--"
+            //            }
             
             cell.lblStatus.text = transactionDetailArray[indexPath.row].cardNum ?? ""
             
@@ -547,7 +568,7 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
         vc.statusValue = object.txnStatus ?? ""
         vc.descriptionValue = object.transactionDescription ?? ""
         vc.paymentURL = object.paymentURL ?? ""
-        vc.emailIdValue = object.email ?? ""
+        vc.emailIdValue = object.emailId ?? ""
         vc.payerNameValue = object.payerName ?? ""
         self.present(vc, animated: true, completion: nil)
     }
@@ -579,18 +600,33 @@ class CardTransactionListViewController: UIViewController, UITableViewDelegate, 
         dateViewRef.isHidden = true
         
         searchViewRef.isHidden = false
-        if cardType == "all"{
+        if cardType == "all" {
             segmentOutsideViewRef.isHidden = true
-
+            
         } else {
             segmentOutsideViewRef.isHidden = false
         }
     }
     
     @IBAction func searchBackButtonTapped(_ sender: Any) {
-        
+        dateViewRef.isHidden = false
         searchViewRef.isHidden = true
         segmentOutsideViewRef.isHidden = true
+        searchTfRef.text = ""
+        
+        if isFromPayment{
+            callBulkHistoryAPI()
+        } else {
+            if AppConstants.UserData.merchantRole == "Admin" {
+                if AppConstants.isCif {
+                    corporateTranDetailReq()
+                } else {
+                    merchantTranDetailReq()
+                }
+            } else {
+                merchantTranDetailReq()
+            }
+        }
     }
     
     @IBAction func printTransactions(_ sender: Any) {
@@ -606,15 +642,15 @@ extension CardTransactionListViewController{
     func callBulkHistoryAPI(){
         viewModel = RegistrationViewControllerViewModel()
         
-//        let param : [String : Any] = [
-//            "cif" : AppConstants.UserData.companyCIF,
-//            "deviceId": AppConstants.UserData.deviceID,
-//            "startDate" : AppConstants.jsonStartDate,
-//            "endDate" : AppConstants.jsonEndDate,
-//            "cardType" : "BULKSMSTXN",
-//            "txnStatus": "Success",
-//            "BulkSmsRefId": self.bulkSmsRefId
-//        ]
+        //        let param : [String : Any] = [
+        //            "cif" : AppConstants.UserData.companyCIF,
+        //            "deviceId": AppConstants.UserData.deviceID,
+        //            "startDate" : AppConstants.jsonStartDate,
+        //            "endDate" : AppConstants.jsonEndDate,
+        //            "cardType" : "BULKSMSTXN",
+        //            "txnStatus": "Success",
+        //            "BulkSmsRefId": self.bulkSmsRefId
+        //        ]
         
         if AppConstants.UserData.merchantRole == "Admin"
         {
@@ -669,10 +705,10 @@ extension CardTransactionListViewController{
         }
         
         
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
-//
-//        self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.bulkTransaction)
-//        bulkTransactionApi()
+        //        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //
+        //        self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.bulkTransaction)
+        //        bulkTransactionApi()
     }
     
     func bulkTransactionApi(){
@@ -693,20 +729,20 @@ extension CardTransactionListViewController{
                     let status : String = userStatus.value(forKey: "status") as? String ?? ""
                     if status == "" {
                         /*
-                        let param : [String : Any] = [
-                            "cif" : AppConstants.UserData.companyCIF,
-                            "deviceId": AppConstants.UserData.deviceID,
-                            "startDate" : AppConstants.jsonStartDate,
-                            "endDate" : AppConstants.jsonEndDate,
-                            "cardType" : "BULKSMSTXN",
-                            "txnStatus": "Success",
-                            "BulkSmsRefId": self?.bulkSmsRefId ?? ""
-                        ]
-                        
-                        MBProgressHUD.showAdded(to: self!.view, animated: true)
-                        self!.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.bulkTransaction)
-                        self!.bulkTransactionApi()
-                        */
+                         let param : [String : Any] = [
+                         "cif" : AppConstants.UserData.companyCIF,
+                         "deviceId": AppConstants.UserData.deviceID,
+                         "startDate" : AppConstants.jsonStartDate,
+                         "endDate" : AppConstants.jsonEndDate,
+                         "cardType" : "BULKSMSTXN",
+                         "txnStatus": "Success",
+                         "BulkSmsRefId": self?.bulkSmsRefId ?? ""
+                         ]
+                         
+                         MBProgressHUD.showAdded(to: self!.view, animated: true)
+                         self!.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.bulkTransaction)
+                         self!.bulkTransactionApi()
+                         */
                         
                         self?.callBulkHistoryAPI()
                         
@@ -774,25 +810,119 @@ extension CardTransactionListViewController: UITextFieldDelegate{
     @objc func didPressOnDoneButton() {
         searchTfRef.resignFirstResponder()
         if searchTfRef.text != ""{
-            searchTranDetailReq()
+            
+            self.searchBasedOnType()
         }
     }
     
-    func searchTranDetailReq(){
-        let merchant : [String]  = ["\(AppConstants.merchantNumber)"]
+    func searchBasedOnType() {
         
-        let param : [String : Any] = ["type":"cif",
-                                      "cif" : AppConstants.selectedFilter!.cif,
-                                      "merchantNum":merchant,
-                                      "deviceId" : AppConstants.UserData.deviceID,
-                                      "startDate": startDate,
-                                      "endDate":endDate,
-                                      "cardType" : cardType,
-                                      "txnStatus" : txnStatus,
-                                      "search":searchTfRef.text ?? ""] //"Success"
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.getTransactionDetails)
-        self.bindSearchUI()
+        /*
+         if cardType == "debit" {
+         searchTranDetailReq(cardTypeParam: cardType, paymentChannelParam: selectedPaymentChannel, searchValue: searchTfRef.text ?? "")
+         
+         } else if cardType == "credit" {
+         searchTranDetailReq(cardTypeParam: cardType, paymentChannelParam: selectedPaymentChannel, searchValue: searchTfRef.text ?? "")
+         
+         } else if cardType == "POS" {
+         
+         
+         } else if cardType == "Ecomm" {
+         
+         
+         } else if cardType == "ezpay" {
+         
+         
+         } else if cardType == "bulkTransactionViewAll" {
+         
+         
+         } else if cardType == "all" {
+         
+         
+         }
+         */
+        
+        searchTranDetailReq(cardTypeParam: selectedCardType, paymentChannelParam: selectedPaymentChannel, searchValue: searchTfRef.text ?? "")
+        
+    }
+    
+    func searchTranDetailReq(cardTypeParam: String, paymentChannelParam: String, searchValue: String) {
+        
+        //        let merchant : [String]  = ["\(AppConstants.merchantNumber)"]
+        //
+        //        let param : [String : Any] = ["type":"cif",
+        //                                      "cif" : AppConstants.selectedFilter!.cif,
+        //                                      "merchantNum":merchant,
+        //                                      "deviceId" : AppConstants.UserData.deviceID,
+        //                                      "startDate": startDate,
+        //                                      "endDate":endDate,
+        //                                      "cardType" : cardType,
+        //                                      "txnStatus" : txnStatus,
+        //                                      "search":searchTfRef.text ?? ""] //"Success"
+        //        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //        self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.search)
+        //        self.bindSearchUI()
+        
+        if AppConstants.UserData.merchantRole == "Admin" {
+            if AppConstants.isCif {
+                
+                let param : [String : Any] = [
+                    "type":"cif",
+                    "cif" : AppConstants.UserData.companyCIF,
+                    "deviceId" : AppConstants.UserData.deviceID,
+                    "startDate" : AppConstants.jsonStartDate,
+                    "endDate" : AppConstants.jsonEndDate,
+                    "cardType" : cardTypeParam,
+                    "txnStatus" : txnStatus,
+                    "search_value" : searchValue,
+                    "paymentChannel" : paymentChannelParam
+                ]
+                
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                
+                self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.search)
+                self.bindSearchUI()
+                
+            } else {
+                
+                let merchant : [String]  = ["\(AppConstants.merchantNumber)"]
+                let param : [String : Any] = ["type":"mid",
+                                              "merchantNum" : merchant,
+                                              "deviceId" : AppConstants.UserData.deviceID,
+                                              "startDate": startDate,
+                                              "endDate": endDate,
+                                              "cardType" : cardTypeParam,
+                                              "txnStatus" : txnStatus,
+                                              "search_value" : searchValue,
+                                              "paymentChannel" : paymentChannelParam
+                ]
+                
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                
+                self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.search)
+                self.bindSearchUI()
+                
+            }
+            
+        } else {
+            
+            let merchant : [String]  = ["\(AppConstants.merchantNumber)"]
+            let param : [String : Any] = ["type":"mid",
+                                          "merchantNum" : merchant,
+                                          "deviceId" : AppConstants.UserData.deviceID,
+                                          "startDate": startDate,
+                                          "endDate": endDate,
+                                          "cardType" : cardTypeParam,
+                                          "txnStatus" : txnStatus,
+                                          "search_value" : searchValue,
+                                          "paymentChannel" : paymentChannelParam
+            ]
+            
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            self.viewModel?.serviceRequest(param: param, apiName: RequestItemsType.search)
+            self.bindSearchUI()
+        }
     }
     
     private func bindSearchUI() {
@@ -810,27 +940,43 @@ extension CardTransactionListViewController: UITextFieldDelegate{
                 let userStatus = DataDecryption().decryption(jsonModel: PayloadRes(iv: response.iv, payload: response.payload))
                 
                 if userStatus != nil {
-                    let message : String = userStatus?.value(forKey: "message") as! String
-                    let status : String = userStatus?.value(forKey: "status") as! String
-                    if status == "Success"{
-                        let errorCode : String = userStatus?.value(forKey: "errorCode") as! String
-                        if errorCode == "L128"{
-                            //                                     print(message)
-                            if let object =  self?.decodeResult(model: transactionDetailResp.self, result: userStatus!){
-                                print(object)
+                    
+                    let status : String = userStatus?.value(forKey: "status") as? String ?? ""
+                    
+                    if status == "" {
+                        
+                        self?.searchBasedOnType()
+                        
+                    } else {
+                        
+                        let message : String = userStatus?.value(forKey: "message") as? String ?? ""
+                        let status : String = userStatus?.value(forKey: "status") as? String ?? ""
+                        
+                        if status == "Success"{
+                            let errorCode : String = userStatus?.value(forKey: "errorCode") as! String
+                            if errorCode == "L128"{
+                                //                                     print(message)
+                                if let object =  self?.decodeResult(model: transactionDetailResp.self, result: userStatus!) {
+                                    
+                                    let transactionDetail = object.model
+                                    if let transactionArr = transactionDetail?.transaction {
+                                        self?.transactionDetailArray = transactionArr
+                                    } else {
+                                        self?.transactionDetailArray = []
+                                    }
+                                    self?.tbTransactions.reloadData()
+                                    
+                                } else {
+                                    self!.showAlertWith(message: AlertMessage(title: "Transactions".localiz(), body: "Invalid Data.".localiz()))
+                                }
                             } else {
-                                self!.showAlertWith(message: AlertMessage(title: "Transactions".localiz(), body: "Invalid Data.".localiz()))
+                                self!.showAlertWith(message: AlertMessage(title: "Transactions".localiz(), body: message.localiz()))
                             }
                             
                         } else {
                             self!.showAlertWith(message: AlertMessage(title: "Transactions".localiz(), body: message.localiz()))
                         }
-                    } else {
-                        self!.showAlertWith(message: AlertMessage(title: "Transactions".localiz(), body: message.localiz()))
                     }
-                    
-                    
-                    
                 }
             }
         })
@@ -839,137 +985,124 @@ extension CardTransactionListViewController: UITextFieldDelegate{
 }
 
 //MARK:- SEGMENT ACTION
-extension CardTransactionListViewController{
-    @IBAction func segmentValueChange(_ sender: UISegmentedControl){
+extension CardTransactionListViewController {
+    
+    @IBAction func segmentValueChange(_ sender: UISegmentedControl) {
         segmentCtrlRef.changeUnderlinePosition()
         
-        if cardType == "debit"{
+        if cardType == "debit" {
+            
+            selectedCardType = "debit"
             
             //let items = ["All","POS","Ecomm","Tijarati"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedPaymentChannel = "all"
             case 1:
-                print("")
+                selectedPaymentChannel = "POS"
             case 2:
-                print("")
-                
+                selectedPaymentChannel = "Ecomm"
             case 3:
-                print("")
-                
+                selectedPaymentChannel = "ezpay"
             default:
                 break
             }
             
-        }else if cardType == "credit"{
+        } else if cardType == "credit" {
             
-            
+            selectedCardType = "credit"
             
             //let items = ["All","POS","Ecomm","Tijarati"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedPaymentChannel = "all"
             case 1:
-                print("")
+                selectedPaymentChannel = "POS"
             case 2:
-                print("")
-                
+                selectedPaymentChannel = "Ecomm"
             case 3:
-                print("")
-                
+                selectedPaymentChannel = "ezpay"
             default:
                 break
             }
             
+        } else if cardType == "POS" {
             
-        }else if cardType == "POS"{
+            selectedPaymentChannel = "POS"
             
-            
-            //let items = ["All","POS","Ecomm","Tijarati"]
+            //let items = ["All","Debit Card","Credit Card"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedCardType = "all"
             case 1:
-                print("")
+                selectedCardType = "debit"
             case 2:
-                print("")
-                
-            case 3:
-                print("")
-                
+                selectedCardType = "credit"
             default:
                 break
             }
             
+        } else if cardType == "Ecomm" {
             
-        }else if cardType == "Ecomm"{
+            selectedPaymentChannel = "Ecomm"
             
-            
-            
-            //let items = ["All","POS","Ecomm","Tijarati"]
+            //let items = ["All","Debit Card","Credit Card"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedCardType = "all"
             case 1:
-                print("")
+                selectedCardType = "debit"
             case 2:
-                print("")
-                
-            case 3:
-                print("")
-                
+                selectedCardType = "credit"
             default:
                 break
             }
             
+        } else if cardType == "ezpay" {
             
-        }else if cardType == "Tijarati"{
+            selectedPaymentChannel = "ezpay"
             
-            //let items = ["All","POS","Ecomm","Tijarati"]
+            //let items = ["All","Debit Card","Credit Card"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedCardType = "all"
             case 1:
-                print("")
+                selectedCardType = "debit"
             case 2:
-                print("")
-                
-            case 3:
-                print("")
-                
+                selectedCardType = "credit"
             default:
                 break
             }
             
+        } else if cardType == "bulkTransactionViewAll" {
             
-        }
-        else if cardType == "bulkTransactionViewAll"{
+            selectedPaymentChannel = "BULKSMSTXN"
             
             //let items = ["All","Debit Card","Credit Card","Tijarati Pay"]
             
             switch segmentCtrlRef.selectedSegmentIndex{
             case 0:
-                print("")
+                selectedCardType = "all"
             case 1:
-                print("")
+                selectedCardType = "debit"
             case 2:
-                print("")
-                
+                selectedCardType = "credit"
             case 3:
-                print("")
-                
+                selectedCardType = "ezpay"
             default:
                 break
             }
         }
         
-        
+        // Call API based on selected tab for search
+        searchBasedOnType()
     }
+    
 }
 
 //MARK:- SELECT MONTH BUTTON ACTION
