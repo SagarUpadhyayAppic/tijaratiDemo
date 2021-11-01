@@ -21,34 +21,6 @@
 
 import UIKit
 
-//extension UIViewController {
-//
-//    public var isPresentedAsStork: Bool {
-//        return transitioningDelegate is SPStorkTransitioningDelegate
-//            && modalPresentationStyle == .custom
-//            && presentingViewController != nil
-//    }
-//
-//    public func presentAsStork(_ controller: UIViewController, height: CGFloat? = nil) {
-//        let transitionDelegate = SPStorkTransitioningDelegate()
-//        transitionDelegate.customHeight = height
-//        controller.transitioningDelegate = transitionDelegate
-//        controller.modalPresentationStyle = .custom
-//        controller.modalPresentationCapturesStatusBarAppearance = true
-//        self.present(controller, animated: true, completion: nil)
-//    }
-//
-//    public func presentAsStork(_ controller: UIViewController, height: CGFloat?, showIndicator: Bool, showCloseButton: Bool, complection: (() -> Void)? = nil) {
-//        let transitionDelegate = SPStorkTransitioningDelegate()
-//        transitionDelegate.customHeight = height
-//        transitionDelegate.showCloseButton = showCloseButton
-//        transitionDelegate.showIndicator = showIndicator
-//        controller.transitioningDelegate = transitionDelegate
-//        controller.modalPresentationStyle = .custom
-//        controller.modalPresentationCapturesStatusBarAppearance = true
-//        self.present(controller, animated: true, completion: complection)
-//    }
-//}
 extension UIViewController {
     
     public var isPresentedAsStork: Bool {
@@ -71,7 +43,6 @@ extension UIViewController {
         transitionDelegate.customHeight = height
         transitionDelegate.showCloseButton = showCloseButton
         transitionDelegate.showIndicator = showIndicator
-        transitionDelegate.cornerRadius = cornerRadius!
         controller.transitioningDelegate = transitionDelegate
         controller.modalPresentationStyle = .custom
         controller.modalPresentationCapturesStatusBarAppearance = true

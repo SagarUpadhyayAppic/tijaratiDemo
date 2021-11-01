@@ -50,68 +50,6 @@
             endingLineNumber = "355"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F74E0A7B-4CAA-4C63-8900-AB24BD6DF7E7 - 4f1acc9fc4fdab39"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tijarati.CardTransactionListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Tijarati"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sagarupadhyay/Desktop/gitHub/Appic/tijarati_iOS/burgan/Burgan/View/CardTransactionListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "356"
-                  endingLineNumber = "356"
-                  offsetFromSymbolStart = "14941">
-               </Location>
-               <Location
-                  uuid = "F74E0A7B-4CAA-4C63-8900-AB24BD6DF7E7 - 4f1acc9fc4fdab39"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tijarati.CardTransactionListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Tijarati"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sagarupadhyay/Desktop/gitHub/Appic/tijarati_iOS/burgan/Burgan/View/CardTransactionListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "356"
-                  endingLineNumber = "356"
-                  offsetFromSymbolStart = "16268">
-               </Location>
-               <Location
-                  uuid = "F74E0A7B-4CAA-4C63-8900-AB24BD6DF7E7 - 4f1acc9fc4fdab39"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tijarati.CardTransactionListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Tijarati"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sagarupadhyay/Desktop/gitHub/Appic/tijarati_iOS/burgan/Burgan/View/CardTransactionListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "356"
-                  endingLineNumber = "356"
-                  offsetFromSymbolStart = "17025">
-               </Location>
-               <Location
-                  uuid = "F74E0A7B-4CAA-4C63-8900-AB24BD6DF7E7 - 4f1acc9fc4fdab39"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tijarati.CardTransactionListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Tijarati"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sagarupadhyay/Desktop/gitHub/Appic/tijarati_iOS/burgan/Burgan/View/CardTransactionListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "356"
-                  endingLineNumber = "356"
-                  offsetFromSymbolStart = "17765">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
